@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Listado de Personas{% endblock %}
+
+{% block content %}
+<h1>Personas</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tipo</th>
+            <th>Apellidos</th>
+            <th>Nombres</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for persona in object_list %}
+        <tr>
+            <td>{{ persona.tipo_persona.descripcion }}</td>
+            <td>{{ persona.apellidos }}</td>
+            <td>{{ persona.nombres }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% include 'pagination.html' with page_obj=page_obj %}
+{% endblock %}

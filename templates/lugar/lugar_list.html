@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Listado de Lugares{% endblock %}
+
+{% block content %}
+<h1>Lugares</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tipo</th>
+            <th>Número</th>
+            <th>Disponible Ahora</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for lugar in object_list %}
+        <tr>
+            <td>{{ lugar.tipo_lugar.descripcion }}</td>
+            <td>{{ lugar.numero }}</td>
+            <td>{{ lugar.disponible_ahora|yesno:"Sí,No" }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% include 'pagination.html' with page_obj=page_obj %}
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Próximas Reservas{% endblock %}
+
+{% block content %}
+<h1>Próximas Reservas</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Persona</th>
+            <th>Fecha</th>
+            <th>Hora de Comienzo</th>
+            <th>Hora Final</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for reserva in reservas %}
+        <tr>
+           
+                <td>{{ reserva.persona }}</td>
+            <td>{{ reserva.fecha }}</td>
+            <td>{{ reserva.hora_comienzo }}</td>
+            <td>{{ reserva.hora_final }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% include 'pagination.html' with page_obj=page_obj %}
+<a href="{% url 'lugar_list' %}" class="btn btn-primary mt-3">Volver al Listado de Lugares</a>
+{% endblock %}

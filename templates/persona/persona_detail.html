@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalle de Persona{% endblock %}
+
+{% block content %}
+<h1>Detalle de {{ object.apellidos }}, {{ object.nombres }}</h1>
+<p><strong>Tipo:</strong> {{ object.tipo_persona.descripcion }}</p>
+<a href="{% url 'persona_list' %}" class="btn btn-primary">Volver al Listado</a>
+{% endblock %}

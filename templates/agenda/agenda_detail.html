@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalle de Reserva{% endblock %}
+
+{% block content %}
+<h1>Detalle de Reserva</h1>
+<p><strong>Persona:</strong> {{ object.persona }}</p>
+<p><strong>Lugar:</strong> {{ object.lugar }}</p>
+<p><strong>Fecha:</strong> {{ object.fecha }}</p>
+<p><strong>Hora de Comienzo:</strong> {{ object.hora_comienzo }}</p>
+<p><strong>Hora Final:</strong> {{ object.hora_final }}</p>
+<a href="{% url 'agenda_list' %}" class="btn btn-primary">Volver al Listado</a>
+{% endblock %}

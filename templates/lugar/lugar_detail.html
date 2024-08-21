@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalle de Lugar{% endblock %}
+
+{% block content %}
+<h1>Detalle del Lugar {{ object.numero }}</h1>
+<p><strong>Tipo:</strong> {{ object.tipo_lugar.descripcion }}</p>
+<p><strong>Disponible Ahora:</strong> {{ object.disponible_ahora|yesno:"Sí,No" }}</p>
+<a href="{% url 'lugar_list' %}" class="btn btn-primary">Volver al Listado</a>
+{% endblock %}

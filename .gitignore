@@ -1,0 +1,60 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.sqlite
+
+# Ignore the 'migrations' folder of the apps if you don't want to track them.
+**/migrations/
+**/migrations/*.pyc
+
+# If using a local SQLite database file
+db.sqlite3
+db.sqlite3-journal
+
+# If using the Django debug toolbar, the debug file will be stored here
+debug.log
+
+# Private media uploaded by users.
+media/
+
+# Django cache files
+*.cache
+cache/
+
+# Static files
+staticfiles/
+static/
+
+# Ignore virtual environments
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+
+# Ignore mypy cache files
+.mypy_cache/
+
+# Ignore Pycharm project files
+.idea/
+
+# Ignore Visual Studio Code workspace files
+.vscode/
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore environment variables file
+.env
