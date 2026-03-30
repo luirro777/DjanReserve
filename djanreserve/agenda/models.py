@@ -1,6 +1,8 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 from persona.models import Persona
 from lugar.models import Lugar
+
 
 class Agenda(models.Model):
     titulo = models.CharField("Titulo", max_length=50)
@@ -13,10 +15,12 @@ class Agenda(models.Model):
 
     def __str__(self):
         return f"Agenda de {self.persona} en {self.lugar} el {self.fecha} de {self.hora_comienzo} a {self.hora_final}"
-    
+
     def clean(self):
         if self.hora_comienzo >= self.hora_final:
-            raise ValidationError('La hora de comienzo debe ser anterior a la hora final.')
+            raise ValidationError(
+                "La hora de comienzo debe ser anterior a la hora final."
+            )
 
     class Meta:
-        unique_together = ('lugar', 'fecha', 'hora_comienzo', 'hora_final')
+        unique_together = ("lugar", "fecha", "hora_comienzo", "hora_final")

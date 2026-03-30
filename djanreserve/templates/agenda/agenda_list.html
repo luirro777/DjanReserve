@@ -3,25 +3,48 @@
 {% block title %}Listado de Reservas{% endblock %}
 
 {% block content %}
-<h1>Reservas</h1>
-<table class="table table-striped">
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Reservas</h1>
+    <a href="{% url 'agenda_create' %}" class="btn btn-primary">Nueva Reserva</a>
+</div>
+
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+{% endif %}
+
+<table class="table table-striped table-hover">
     <thead>
         <tr>
+            <th>Título</th>
             <th>Persona</th>
             <th>Lugar</th>
             <th>Fecha</th>
-            <th>Hora de Comienzo</th>
-            <th>Hora Final</th>
+            <th>Hora</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
         {% for agenda in object_list %}
         <tr>
+            <td>{{ agenda.titulo }}</td>
             <td>{{ agenda.persona }}</td>
             <td>{{ agenda.lugar }}</td>
             <td>{{ agenda.fecha }}</td>
-            <td>{{ agenda.hora_comienzo }}</td>
-            <td>{{ agenda.hora_final }}</td>
+            <td>{{ agenda.hora_comienzo }} - {{ agenda.hora_final }}</td>
+            <td>
+                <a href="{% url 'agenda_detail' agenda.pk %}" class="btn btn-sm btn-info">Ver</a>
+                <a href="{% url 'agenda_update' agenda.pk %}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="{% url 'agenda_delete' agenda.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6" class="text-center">No hay reservas registradas.</td>
         </tr>
         {% endfor %}
     </tbody>

@@ -3,7 +3,24 @@
 {% block title %}Detalle de Persona{% endblock %}
 
 {% block content %}
-<h1>Detalle de {{ object.apellidos }}, {{ object.nombres }}</h1>
-<p><strong>Tipo:</strong> {{ object.tipo_persona.descripcion }}</p>
-<a href="{% url 'persona_list' %}" class="btn btn-primary">Volver al Listado</a>
+<div class="row">
+    <div class="col-md-8">
+        <h1>Detalle de {{ object.apellidos }}, {{ object.nombres }}</h1>
+        <dl class="row mt-4">
+            <dt class="col-sm-3">Tipo:</dt>
+            <dd class="col-sm-9">{{ object.tipo_persona.descripcion }}</dd>
+            
+            <dt class="col-sm-3">Apellidos:</dt>
+            <dd class="col-sm-9">{{ object.apellidos }}</dd>
+            
+            <dt class="col-sm-3">Nombres:</dt>
+            <dd class="col-sm-9">{{ object.nombres }}</dd>
+        </dl>
+        <div class="mt-3">
+            <a href="{% url 'persona_list' %}" class="btn btn-secondary">Volver</a>
+            <a href="{% url 'persona_update' object.pk %}" class="btn btn-warning">Editar</a>
+            <a href="{% url 'persona_delete' object.pk %}" class="btn btn-danger">Eliminar</a>
+        </div>
+    </div>
+</div>
 {% endblock %}
